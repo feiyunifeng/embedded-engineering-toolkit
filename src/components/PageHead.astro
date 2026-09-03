@@ -1,0 +1,4 @@
+---
+const {eyebrow='Engineering reference',title,intro,crumbs=[]}=Astro.props;
+---
+<header class="page-head"><div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a>{crumbs.map((c:any)=><> / <a href={c.url}>{c.name}</a></>)}</nav><div class="eyebrow">{eyebrow}</div><h1>{title}</h1><p class="prose">{intro}</p></div></header>

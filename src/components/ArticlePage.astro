@@ -1,0 +1,4 @@
+---
+import Base from '../layouts/BaseLayout.astro';import Head from './PageHead.astro';import AdSlot from './AdSlot.astro';const {title,description,eyebrow='Technical guide'}=Astro.props;
+---
+<Base title={title} description={description}><Head {title} intro={description} {eyebrow}/><article class="container content prose"><slot/><AdSlot/><div class="callout"><strong>Check your source documentation.</strong> These equations are useful models, but hardware modes and protocol conditions can add constraints not represented in a general guide.</div></article></Base>

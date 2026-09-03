@@ -1,0 +1,30 @@
+# Dependencies and package-manager stores
+node_modules/
+.pnpm-store/
+
+# Astro and production output
+.astro/
+dist/
+
+# Local environment and secrets
+.env
+.env.*
+
+# Logs, reports, coverage, and temporary files
+*.log
+logs/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+*.temp
+tmp/
+temp/
+coverage/
+
+# Local editor and operating-system files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
