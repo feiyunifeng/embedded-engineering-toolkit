@@ -1,0 +1,5 @@
+---
+const {name,formula,example,mistakes=[],faqs=[],related=[]}=Astro.props;
+const faqSchema={'@context':'https://schema.org','@type':'FAQPage','inLanguage':'zh-Hans',mainEntity:faqs.map((f:any)=>({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))};
+---
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)}/><section class="prose"><h2>公式与假设</h2><p>{formula}</p><h2>计算案例</h2><p>{example}</p><h2>使用方法</h2><ol><li>按字段旁的单位输入数值。</li><li>选择符合设计的帧格式或硬件选项。</li><li>点击“计算”，再与时序或带宽预算比较。</li><li>在确定设计前核对假设和芯片参考手册。</li></ol><h2>常见错误</h2><ul>{mistakes.map((m:string)=><li>{m}</li>)}</ul><h2>常见问题</h2><div class="faq">{faqs.map((f:any)=><details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div><h2>相关工具和指南</h2><ul>{related.map((r:any)=><li><a href={r.url}>{r.name}</a></li>)}</ul><div class="callout"><strong>工程免责声明。</strong>{name}用于学习和早期设计估算。关键数值请结合测量、设备文档和专业评审确认。<a href="/zh/disclaimer/">阅读完整免责声明。</a></div></section>

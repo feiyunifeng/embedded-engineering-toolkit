@@ -1,0 +1,7 @@
+---
+import Base from '../../layouts/ZhBaseLayout.astro';
+import Head from '../../components/ZhPageHead.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+<Base title="嵌入式系统计算器" description="面向 UART、CAN 总线和 STM32 定时器的免费浏览器计算器，提供公式、案例和工程说明。" enPath="/"><Head eyebrow="嵌入式工程工具包" title="面向嵌入式设计的实用计算" intro="为嵌入式系统工程师提供实用计算器。每个结果都展示假设，计算均在浏览器本地完成。"/><section class="container content"><h2>开始使用计算器</h2><div class="grid"><ToolCard href="/zh/tools/uart-transmission-time/" label="串行通信" title="UART 传输时间" text="根据波特率和帧格式计算传输时间与有效吞吐量。"/><ToolCard href="/zh/tools/can-bus-load/" label="汽车与工业" title="CAN 总线负载" text="比较 Classical CAN 的总线利用率和保守估算。"/><ToolCard href="/zh/tools/stm32-timer-pwm/" label="微控制器" title="STM32 定时器与 PWM" text="计算定时器频率、占空比以及 PSC/ARR。"/></div><AdSlot/><div class="grid"><div class="card"><h2>看懂公式</h2><p>结果旁边给出公式和假设，便于复核算术。</p></div><div class="card"><h2>适合实验台</h2><p>响应式表单、清晰单位和键盘友好控件让快速核算更简单。</p></div><div class="card"><h2>边算边学</h2><p>指南解释帧开销、CAN 填充和定时器寄存器语义。</p></div></div></section></Base>

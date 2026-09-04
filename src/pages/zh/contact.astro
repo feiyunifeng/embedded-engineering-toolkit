@@ -1,0 +1,4 @@
+---
+import Article from '../../components/ZhArticlePage.astro';import {siteConfig} from '../../config/site';
+---
+<Article title="联系" description="联系嵌入式工程工具包，反馈计算器、勘误、隐私或网站无障碍问题。" eyebrow="联系" enPath="/contact/"><h2>技术反馈</h2><p>反馈勘误或功能建议时，请说明计算器、输入值、预期结果，以及依据的文档或标准。清晰的复现信息有助于更快处理。</p><h2>电子邮箱</h2><p><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p><p>请勿发送机密设计、凭据、受出口管制的材料或个人数据。</p><h2>回复范围</h2><p>本站不提供项目认证、安全批准、针对具体设备的咨询或紧急支持。一般反馈可能用于后续修订，但不构成专业服务关系。</p></Article>

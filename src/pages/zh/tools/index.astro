@@ -1,0 +1,4 @@
+---
+import Base from '../../../layouts/ZhBaseLayout.astro';import Head from '../../../components/ZhPageHead.astro';import ToolCard from '../../../components/ToolCard.astro';
+---
+<Base title="全部工程计算器" description="用于通信时序、网络容量和微控制器定时器的嵌入式工程计算器。" enPath="/tools/"><Head eyebrow="工具目录" title="全部工程计算器" intro="专注于通信时序、网络容量和微控制器定时器的工具。计算在本地运行并展示公式。"/><section class="container content"><div class="grid"><ToolCard href="/zh/tools/uart-transmission-time/" label="UART" title="UART 传输时间计算器" text="帧时间、总位数和有效吞吐量。"/><ToolCard href="/zh/tools/can-bus-load/" label="Classical CAN" title="CAN 总线负载计算器" text="标准/扩展标识符和两种填充假设。"/><ToolCard href="/zh/tools/stm32-timer-pwm/" label="STM32" title="定时器与 PWM 计算器" text="寄存器校验和目标频率求解。"/></div><section class="prose"><h2>适用范围</h2><p>可用于架构设计、固件调试、实验排查或学习。每个工具都说明单位、公式和简化假设。</p><h2>不能替代的工作</h2><p>快速计算不能替代示波器、总线分析仪、时钟树配置或芯片参考手册。时序敏感和安全相关工作请务必验证。</p></section></section></Base>
