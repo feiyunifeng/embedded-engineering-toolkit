@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { siteConfig } from '../config/site';
+import CloudflareAnalytics from '../components/CloudflareAnalytics.astro';
 const { title, description, crumbs = [], lang = 'en', zhPath, enPath: explicitEnPath } = Astro.props;
 const pathname = Astro.url.pathname;
 const enPath = explicitEnPath ?? (pathname.startsWith('/zh/') ? pathname.slice(3) || '/' : pathname);
@@ -32,6 +33,7 @@ const bc = [{ name: lang === 'zh-Hans' ? '首页' : 'Home', url: lang === 'zh-Ha
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#071a2b" />
     <script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList',inLanguage:lang,itemListElement:bc.map((x:any,i:number)=>({'@type':'ListItem',position:i+1,name:x.name,item:new URL(x.url,siteConfig.url).href}))})} />
+    <CloudflareAnalytics />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>

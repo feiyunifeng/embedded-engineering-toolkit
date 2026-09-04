@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { siteConfig } from '../config/site';
+import CloudflareAnalytics from '../components/CloudflareAnalytics.astro';
 const { title, description, crumbs = [], enPath } = Astro.props;
 const pathname = Astro.url.pathname;
 const englishPath = enPath ?? (pathname.startsWith('/zh/') ? pathname.slice(3) || '/' : '/');
@@ -23,6 +24,7 @@ const bc = [{ name: '首页', url: '/zh/' }, ...crumbs];
     <meta property="og:type" content="website" /><meta property="og:site_name" content={siteConfig.name} /><meta property="og:title" content={fullTitle} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:image" content={new URL('/og.svg', siteConfig.url)} /><meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="manifest" href="/site.webmanifest" /><meta name="theme-color" content="#071a2b" />
     <script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList',inLanguage:'zh-Hans',itemListElement:bc.map((x:any,i:number)=>({'@type':'ListItem',position:i+1,name:x.name,item:new URL(x.url,siteConfig.url).href}))})} />
+    <CloudflareAnalytics />
   </head>
   <body><a class="skip" href="#main">跳到主要内容</a><header class="site-header"><div class="container nav"><a class="brand" href="/zh/">{siteConfig.name}<span>面向嵌入式系统工程师的实用计算器</span></a><nav class="nav-links" aria-label="主导航"><a href="/zh/tools/">全部工具</a><a href="/zh/guides/uart-frame-time/">指南</a><a href="/zh/about/">关于</a><a href="/zh/contact/">联系</a></nav><nav class="language-switch" aria-label="语言"><a href={canonical}>简体中文</a><a href={englishPath}>English</a></nav></div></header><main id="main"><slot /></main><footer class="site-footer"><div class="container footer-grid"><div><strong>{siteConfig.name}</strong><p>面向嵌入式系统工程师的实用计算器</p><small>独立的学习工具。请结合设备文档核对结果。</small></div><div><strong>资源</strong><ul><li><a href="/zh/tools/">全部工具</a></li><li><a href="/zh/about/">关于</a></li><li><a href="/zh/contact/">联系</a></li></ul></div><div><strong>法律</strong><ul><li><a href="/zh/privacy/">隐私政策</a></li><li><a href="/zh/terms/">使用条款</a></li><li><a href="/zh/disclaimer/">工程免责声明</a></li></ul></div></div></footer></body>
 </html>

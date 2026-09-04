@@ -1,0 +1,12 @@
+<script is:inline>
+  (() => {
+    if (window.location.hostname !== 'embedded-engineering-toolkit.pages.dev') return;
+    const beaconUrl = 'https://static.cloudflareinsights.com/beacon.min.js';
+    if (document.querySelector(`script[src="${beaconUrl}"]`)) return;
+    const beacon = document.createElement('script');
+    beacon.type = 'module';
+    beacon.src = beaconUrl;
+    beacon.setAttribute('data-cf-beacon', '{"token":"9e178cda0f664e9c82573e09a7d306c5"}');
+    document.head.appendChild(beacon);
+  })();
+</script>
