@@ -1,1 +1,5 @@
-<aside class="ad-slot" aria-label="Reserved advertising space">Reserved for a future, non-intrusive advertisement. No ad network is loaded.</aside>
+---
+const {locale=Astro.url.pathname.startsWith('/zh')?'zh':'en'}=Astro.props;
+const isZh=locale==='zh';
+---
+<aside class="ad-slot" aria-label={isZh?'预留广告位':'Reserved advertising space'}>{isZh?'预留给未来的非侵入式广告位。当前未加载广告网络。':'Reserved for a future, non-intrusive advertisement. No ad network is loaded.'}</aside>

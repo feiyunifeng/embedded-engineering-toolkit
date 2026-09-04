@@ -4,4 +4,4 @@ import Head from './ZhPageHead.astro';
 import AdSlot from './AdSlot.astro';
 const { title, description, eyebrow = '技术指南', enPath, crumbs = [] } = Astro.props;
 ---
-<Base title={title} description={description} enPath={enPath}><Head {title} intro={description} {eyebrow} crumbs={crumbs}/><article class="container content prose"><slot/><AdSlot/><div class="callout"><strong>请核对设备文档。</strong>这些公式是通用模型，具体硬件模式和协议条件可能带来额外约束。</div></article></Base>
+<Base title={title} description={description} enPath={enPath}><Head {title} intro={description} {eyebrow} crumbs={crumbs}/><article class="container content prose"><slot/><AdSlot locale="zh"/><div class="callout"><strong>请核对设备文档。</strong>这些公式是通用模型，具体硬件模式和协议条件可能带来额外约束。</div></article></Base>

@@ -1,4 +1,4 @@
 ---
-const {href,title,text,label}=Astro.props;
+const {href,title,text,label,cta=Astro.url.pathname.startsWith('/zh')?'打开计算器 →':'Open calculator →'}=Astro.props;
 ---
-<a class="card" href={href}><div class="eyebrow">{label}</div><h2>{title}</h2><p>{text}</p><span>Open calculator →</span></a>
+<a class="card" href={href}><div class="eyebrow">{label}</div><h2>{title}</h2><p>{text}</p><span>{cta}</span></a>
