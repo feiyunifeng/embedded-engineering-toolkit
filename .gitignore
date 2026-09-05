@@ -9,6 +9,11 @@ dist/
 # Local environment and secrets
 .env
 .env.*
+*.key
+*.pem
+
+# Local outreach and publishing notes
+docs/outreach/
 
 # Logs, reports, coverage, and temporary files
 *.log

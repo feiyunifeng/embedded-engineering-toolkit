@@ -1,56 +1,70 @@
 # Embedded Engineering Toolkit
 
-A lightweight English-language Astro website with browser-based UART, Classical CAN, and STM32 timer/PWM calculators. The production build is fully static and can be uploaded directly to Hostinger.
+Practical browser-based calculators and references for embedded systems development.
 
-## GitHub and Cloudflare Pages
+## 🌐 Live Website
 
-The repository is ready for GitHub source control. Commit the source files and lockfile listed below; local dependencies, generated output, environment files, logs, and editor state are excluded by `.gitignore`.
+<https://embedded-engineering-toolkit.pages.dev/>
 
-Cloudflare Pages can deploy this static Astro build without an SSR adapter or backend. Use these project settings:
+The site has English routes and Simplified Chinese equivalents under `/zh/`. Calculations run in the browser and expose their assumptions; they are engineering aids, not replacements for device documentation or measurements.
 
-- Production branch: `main`
-- Build command: `npm run build`
-- Build output directory: `dist`
-- Framework preset: Astro (optional; the values above are authoritative)
+## Available Tools
 
-Cloudflare Pages should build from the repository root. No environment variables are required for the current site. The same `dist` output is suitable for static hosting.
+| Tool | What it does | Online |
+| --- | --- | --- |
+| STM32 Timer & PWM Calculator | Calculates counter clock, period, PWM frequency and edge-aligned duty from timer clock, PSC, ARR and CCR; includes bounded target-frequency solving with error reporting. | [Open tool](https://embedded-engineering-toolkit.pages.dev/tools/stm32-timer-pwm/) |
+| UART Transmission Time Calculator | Calculates frame bits, total line bits, theoretical transmission time and UART data-field payload bit rate for a selected frame format and frame count. | [Open tool](https://embedded-engineering-toolkit.pages.dev/tools/uart-transmission-time/) |
+| Classical CAN Bus Load Calculator | Estimates Classical CAN bus load for standard or extended identifiers, with the documented no-stuffing and 20% planning-estimate views. | [Open tool](https://embedded-engineering-toolkit.pages.dev/tools/can-bus-load/) |
 
-## Commands
+## Why this project exists
+
+Timer PSC/ARR values, PWM frequency, UART framing and clock-derived calculations look simple but are easy to misread. This project provides fast, transparent, browser-based checks with formulas, worked examples and explicit limits.
+
+## Example: STM32 Timer
+
+For a 72 MHz timer input clock, PSC = 71 and ARR = 999 produce a 1 MHz counter clock and a 1 kHz PWM frequency. With CCR = 250 in the documented edge-aligned model, the computed duty is 25%.
+
+[Try the STM32 Timer & PWM Calculator](https://embedded-engineering-toolkit.pages.dev/tools/stm32-timer-pwm/)
+
+## Local Development
 
 ```bash
 npm install
 npm run dev
-npm run test
-npm run build
-npm run validate
 ```
 
-`npm run dev` starts the local site. `npm run test` runs formula unit tests. `npm run build` creates `dist/`; `npm run validate` runs tests, builds, and checks generated pages, key assets, internal links, and forbidden placeholders.
+Useful checks:
 
-## Site identity and domain
+```bash
+npm run test
+npm run validate
+npm run build
+node scripts/validate-build.mjs
+```
 
-Edit `src/config/site.ts` after purchasing a domain. Change `name`, `tagline`, `url`, `email`, and optional social links there. Also update the absolute sitemap URL in `public/robots.txt`; static text files cannot import the TypeScript config. Replace the placeholder contact mailbox before launch. No real personal information is currently included.
+`npm run validate` runs the tests, static build and generated-site checks. The production output is written to `dist/`.
 
-## Hostinger deployment
+## Tech Stack
 
-1. Run `npm install`, `npm run validate`, and inspect the generated site locally.
-2. In Hostinger, connect the purchased domain to the hosting plan.
-3. Empty only the intended `public_html` destination when appropriate, then upload the **contents** of `dist/` (not the `dist` directory itself) to `public_html`.
-4. Enable Hostinger's SSL certificate and force HTTPS after DNS is active.
-5. Verify the home page, all calculator routes, `404.html`, `robots.txt`, and `sitemap-index.xml` on the final domain.
-6. Add the HTTPS property to Google Search Console, verify ownership, and submit `/sitemap-index.xml`.
+- Astro static output
+- TypeScript calculation modules
+- Dependency-free browser UI adapters
+- Vitest tests
+- `@astrojs/sitemap`
+- Cloudflare Pages for the live deployment
 
-## Future AdSense and consent setup
+## Project Status
 
-`src/components/AdSlot.astro` reserves unobtrusive space and currently loads no network. After approval, add the genuine Google-provided script once in `src/layouts/BaseLayout.astro` and replace or enhance the ad-slot component using the real publisher and unit identifiers. Never use a fabricated publisher ID. Upload Google's verified `ads.txt` at `public/ads.txt` so it builds to the site root. Before enabling ads, update the Privacy Policy and implement a Google-certified CMP where consent rules apply; document cookie categories, vendors, and withdrawal controls based on the actual configuration.
+Active development. The current site includes UART, Classical CAN and STM32 Timer/PWM calculators, English and Simplified Chinese routes, guides and worked examples.
 
-## Architecture
+## Feedback
 
-- `src/lib/` — pure, tested TypeScript calculations
-- `src/pages/` — Astro routes and long-form English content
-- `src/components/` — shared layout/content components
-- `public/scripts/` — dependency-free browser UI adapters
-- `tests/` — Vitest unit tests
-- `scripts/validate-build.mjs` — generated-site checks
+Please use GitHub Issues for calculation errors, incorrect assumptions, device-specific behavior and feature requests. For STM32 reports, include the MCU model, timer instance and relevant clock-tree settings.
 
-The CAN model is explicitly an estimate. It uses 47/67 base bits including intermission plus payload and shows a separate 20% conservative stuffing allowance.
+## Disclaimer
+
+The calculators are engineering aids, not substitutes for datasheets, reference manuals, measurement equipment or vendor configuration tools. Confirm timing-sensitive results on the target device.
+
+## License
+
+This repository does not currently include a `LICENSE` file. No open-source license is being claimed here; add and document one before redistributing under specific license terms.
